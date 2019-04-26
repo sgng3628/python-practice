@@ -109,7 +109,7 @@ for year in range(2019,2022):
             
         print()
         print()
-'''
+
 
 # 달력 만들기-6 성공 2019년 이후 달력(윤년 계산)
 dict_cal={1:31, 2:28,3:31,4:30,5:31,6:30,7:31,8:31,9:30,10:31,11:30,12:31}
@@ -208,3 +208,120 @@ for year in range(2019,2119):
                 
             print()
             print()
+'''
+
+#달력만들기 년도/월을 input 받고 그 달의 달력만 보여주기
+dict_cal={1:31, 2:28,3:31,4:30,5:31,6:30,7:31,8:31,9:30,10:31,11:30,12:31,'delay':1}
+dict_cal2={1:31, 2:29,3:31,4:30,5:31,6:30,7:31,8:31,9:30,10:31,11:30,12:31,'delay':2}
+
+origin_dealy_2001=1
+input_year=int(input('연도를 입력하세요.'))
+input_month=int(input('월을 입력하세요.'))
+
+space=origin_dealy_2001
+#2001년을 이후 delay 1
+for year in range(2001,input_year):
+    if year%400==0:
+        space+=dict_cal2['delay']
+    elif year%100==0:
+        space+=dict_cal['delay']
+    elif year%4==0:
+        space+=dict_cal2['delay']
+    else:
+        space+=dict_cal['delay']
+
+
+if input_year%400==0:
+    for month in range(1,input_month):
+        space+=dict_cal2[month]
+    
+    print(f'{input_year}년 {input_month}월')
+    date=[]
+    for i in range(space%7):
+        date.append('  ')
+    for j in range(1,dict_cal2[input_month]+1):
+        if j in range(10):
+            digit=' '+str(j)
+        else: digit=str(j)
+        date.append(digit)
+    print(' 일  월  화  수  목  금  토')
+    for k in range(1, len(date)+1):
+        if k%7==0:
+            print(date[k-1])
+            print()
+        else: print(date[k-1], end="  ")
+        
+    print()
+    print()
+
+elif input_year%100==0:
+    for month in range(1,input_month):
+        space+=dict_cal[month]
+    
+    print(f'{input_year}년 {input_month}월')
+    date=[]
+    for i in range(space%7):
+        date.append('  ')
+    for j in range(1,dict_cal[input_month]+1):
+        if j in range(10):
+            digit=' '+str(j)
+        else: digit=str(j)
+        date.append(digit)
+    print(' 일  월  화  수  목  금  토')
+    for k in range(1, len(date)+1):
+        if k%7==0:
+            print(date[k-1])
+            print()
+        else: print(date[k-1], end="  ")
+        
+    print()
+    print()
+
+elif input_year%4==0:
+    for month in range(1,input_month):
+        space+=dict_cal2[month]
+    
+    print(f'{input_year}년 {input_month}월')
+    date=[]
+    for i in range(space%7):
+        date.append('  ')
+    for j in range(1,dict_cal2[input_month]+1):
+        if j in range(10):
+            digit=' '+str(j)
+        else: digit=str(j)
+        date.append(digit)
+    print(' 일  월  화  수  목  금  토')
+    for k in range(1, len(date)+1):
+        if k%7==0:
+            print(date[k-1])
+            print()
+        else: print(date[k-1], end="  ")    
+        
+else:
+    for month in range(1,input_month):
+        space+=dict_cal[month]
+    
+    print(f'{input_year}년 {input_month}월')
+    date=[]
+    for i in range(space%7):
+        date.append('  ')
+    for j in range(1,dict_cal[input_month]+1):
+        if j in range(10):
+            digit=' '+str(j)
+        else: digit=str(j)
+        date.append(digit)
+    print(' 일  월  화  수  목  금  토')
+    for k in range(1, len(date)+1):
+        if k%7==0:
+            print(date[k-1])
+            print()
+        else: print(date[k-1], end="  ")
+        
+    print()
+    print()
+        
+
+
+
+        
+    
