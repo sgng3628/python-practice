@@ -1,0 +1,11 @@
+{% extends 'boards/base.html' %}
+{% block body %}
+
+<h1>{{user.first_name}} 님의 권장소비자량은 {{calorie}}kcal입니다</h1>
+<p>탄수화물 권장량: {{carbohydrate_low}}g~{{carbohydrate_high}}g</p>
+<p>단백질 권장량: {{protein_low}}g~{{protein_high}}g</p>
+<p>지방 권장량: {{fat_low}}g~{{fat_high}}g</p>
+
+<a href="{% url 'boards:select_food' board_pk %}">[음식 입력하기]</a><hr>
+<a href="{% url 'boards:index' %}">[처음으로 돌아가기]</a>
+{% endblock%}

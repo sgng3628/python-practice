@@ -1,0 +1,16 @@
+{% extends 'boards/base.html' %}
+{% load static %}
+
+{% block body %}
+    <h1 class="text-center">Boards</h1>
+    <img src="{% static 'conan.jpg' %}" alt='conan'></img>
+    <hr>
+    {% for board in boards %}
+        <p>글 번호: {{ board.pk  }}</p>
+        <p>글 제목: {{ board.title  }}</p>
+        <p>글 내용: {{ board.content  }}</p>
+        <a href="{% url 'boards:detail' board.pk %}">[상세 글 보러가기]</a>
+    {% endfor %}
+    <br>
+    <a href="{% url 'boards:new' %}">[글 쓰기]</a>
+{% endblock %}

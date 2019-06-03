@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}
+    <h1>장고 ㅎㅇㅌ</h1>
+{% endblock %}
+{% block body %}
+
+    <h1 class="text-center">주소 목록</h1>
+    <br>
+    {% for i in numbers %}
+        <h2>{{i}}</h2>
+    {% endfor %}
+    {% for j in a %}
+        <h2>{{j}}</h2>
+    {% endfor %}
+{% endblock %}

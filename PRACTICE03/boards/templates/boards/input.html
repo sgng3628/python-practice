@@ -1,0 +1,21 @@
+{% extends 'boards/base.html' %}
+{% block body %}
+    <form action="{% url 'boards:select_food' %}" method='POST'>
+    {% csrf_token %}
+        
+        <label for="food1"><아침>메뉴를 입력하세요</label>
+        <input type="text" name="food1"/>
+        <label for="quantity1"><아침> g수를 적어주세요</label>
+        <input type="number" name="quantity1"/><br>
+        <label for="food2"><점심>메뉴를 입력하세요</label>
+        <input type="text" name="food2"/>
+        <label for="quantity2"><점심> g수를 적어주세요</label>
+        <input type="number" name="quantity2"/><br>
+        <label for="food3"><저녁>메뉴를 입력하세요</label>
+        <input type="text" name="food3"/>
+        <label for="quantity3"><저녁> g수를 적어주세요</label>
+        <input type="number" name="quantity3"/>
+        <input type="submit" value="Submit"/>
+    </form>
+    
+{% endblock %}

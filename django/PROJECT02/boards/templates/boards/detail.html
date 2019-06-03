@@ -1,0 +1,44 @@
+{% extends 'boards/base.html' %}
+{% load static %}
+{% block body %}
+
+    <h1 class="text-center">DETAIL</h1>
+    <hr>
+    <h2>{{board.pk}}번 글입니다</h2>
+    <p>제목: {{ board.title }}</p>
+    <p>내용: {{ board.content }}</p>
+    <p>글 작성 시간: {{board.created_at}}</p>
+    <p>글 수정 시간: {{board.updated_at}}</p>
+    <hr>
+    
+    <form action = '{% url 'boards:comments_create' board.pk %}' method = "POST">
+        {% csrf_token%}
+        댓글달기: <input type="text" name="content"/>
+        <input type="submit" value="Submit"/>
+    </form>
+    
+    
+    <h3>댓글 목록/ 현재까지의 댓글 개수 {{comments | length }}</h3>
+    {% for comment in comments %}
+        <li>{{ comment.content }}</li>
+        <form action="{% url 'boards:comments_delete' board.pk comment.pk %}" method = "POST">
+            {% csrf_token %}
+            <input type="submit" value="댓글삭제"/>
+        </form>
+    {% empty %}
+        <p><b>댓글이 없습니다.</b></p>
+        
+    {% endfor %}
+    <hr>
+    {% if board.image %}
+        <img src="{{ board.image.url }}" alt='{{ board.image }}'></img><br>
+    {% else %}
+        <img src="{% static 'conan.jpg' %}" alt="conan">
+    {% endif %}
+    <a href="{% url 'boards:edit' board.pk %}">[글 수정]</a><br>
+    <form action = "{% url 'boards:delete' board.pk %}" method = 'POST'>
+        {% csrf_token %}
+        <input type="submit" value="글삭제"/>
+    </form>
+    <a href="{% url 'boards:index' %}">[게시판으로 돌아가기]</a>
+    {% endblock %}

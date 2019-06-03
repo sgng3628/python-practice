@@ -1,0 +1,34 @@
+{% extends 'boards/base.html' %}
+{% block body %}
+
+        <h1>아침</h1>
+        <h1>{{user.first_name}}님이 섭취한 <{{food1}}>의 영양은 다음과 같습니다.</h1>
+        <p>칼로리: {{calorie1}}kcal </p>
+        <p>탄수화물: {{carbohydrate1}}g</p>
+        <p>단백질: {{protein1}}g</p>
+        <p>지방: {{fat1}}g</p><br>
+        <h1>점심</h1>
+        <h1>{{user.first_name}}님이 섭취한 <{{food2}}>의 영양은 다음과 같습니다.</h1>
+        <p>칼로리: {{calorie2}}kcal </p>
+        <p>탄수화물: {{carbohydrate2}}g</p>
+        <p>단백질: {{protein2}}g</p>
+        <p>지방: {{fat2}}g</p><br>
+        <h1>저녁</h1>
+        <h1>{{user.first_name}}님이 섭취한 <{{food3}}>의 영양은 다음과 같습니다.</h1>
+        <p>칼로리: {{calorie3}}kcal </p>
+        <p>탄수화물: {{carbohydrate3}}g</p>
+        <p>단백질: {{protein3}}g</p>
+        <p>지방: {{fat3}}g</p><br>
+        
+        <h1>{{user.first_name}}님이 오늘 하루 에너지 섭취량은 다음과 같습니다.</h1>
+        <p>칼로리: {{sum_calorie}}kcal </p>
+        <p>탄수화물: {{sum_carbohydrate}}g</p>
+        <p>단백질: {{sum_protein}}g</p>
+        <p>지방: {{sum_fat}}g</p><br>
+    
+    
+    
+    
+    
+<a href="{% url 'boards:detail' %}">[처음으로돌아가기]</a>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'boards/base.html' %}
+{% block body %}
+    <h1>Detail</h1>
+    <hr>
+    <p>No. {{board.pk}}</p>
+    <p>title: {{board.title}}</p>
+    <p>content: {{board.content}}</p>
+    <p>create: {{board.created_at}}</p>
+    <p>update: {{board.updated_at}}</p>
+    
+    <a href="{% url 'boards:index' %}">[HOME]</a><br>
+    {% if user == board.user %}
+        <a href="{% url 'boards:update' board.pk %}">[EDIT]</a>
+        <form action='{% url 'boards:delete' board.pk %}' method='POST'>
+            {% csrf_token %}
+            <input type="submit" value="DELETE"/>
+        </form>
+    {% endif %}
+{% endblock %}
